@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/hcirepo/static/css/main.21b27587.chunk.css",
+    "main.js": "/hcirepo/static/js/main.74b809ad.chunk.js",
+    "main.js.map": "/hcirepo/static/js/main.74b809ad.chunk.js.map",
+    "runtime-main.js": "/hcirepo/static/js/runtime-main.26857bdd.js",
+    "runtime-main.js.map": "/hcirepo/static/js/runtime-main.26857bdd.js.map",
+    "static/css/2.673ed84c.chunk.css": "/hcirepo/static/css/2.673ed84c.chunk.css",
+    "static/js/2.b667342d.chunk.js": "/hcirepo/static/js/2.b667342d.chunk.js",
+    "static/js/2.b667342d.chunk.js.map": "/hcirepo/static/js/2.b667342d.chunk.js.map",
+    "static/js/3.78e4d791.chunk.js": "/hcirepo/static/js/3.78e4d791.chunk.js",
+    "static/js/3.78e4d791.chunk.js.map": "/hcirepo/static/js/3.78e4d791.chunk.js.map",
+    "index.html": "/hcirepo/index.html",
+    "static/css/2.673ed84c.chunk.css.map": "/hcirepo/static/css/2.673ed84c.chunk.css.map",
+    "static/css/main.21b27587.chunk.css.map": "/hcirepo/static/css/main.21b27587.chunk.css.map",
+    "static/js/2.b667342d.chunk.js.LICENSE.txt": "/hcirepo/static/js/2.b667342d.chunk.js.LICENSE.txt",
+    "static/media/logo.67181032.png": "/hcirepo/static/media/logo.67181032.png",
+    "static/media/logo.6ce24c58.svg": "/hcirepo/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.26857bdd.js",
+    "static/css/2.673ed84c.chunk.css",
+    "static/js/2.b667342d.chunk.js",
+    "static/css/main.21b27587.chunk.css",
+    "static/js/main.74b809ad.chunk.js"
+  ]
+}
