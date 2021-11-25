@@ -1,35 +1,26 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
-import ImageSlider from "./components/ImageSlider";
-import { SliderData } from "./components/SliderData";
-import Axios from "axios";
+import React from 'react';
+ import Navbar from './components/NavBar';
+ import './App.css';
+ import Home from './components/pages/Home';
+ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+ import Services from './components/pages/Services';
+ import Products from './components/pages/Products';
+ import SignUp from './components/pages/SignUp';
 
-function App() {
-  const [data, setData] = React.useState(null);
+ function App() {
+   return (
+     <>
+       <Router>
+         <Navbar />
+         <Switch>
+           <Route path='/' exact component={Home} />
+           <Route path='/services' component={Services} />
+           <Route path='/products' component={Products} />
+           <Route path='/sign-up' component={SignUp} />
+         </Switch>
+       </Router>
+     </>
+   );
+ }
 
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
-
-  const addEmployee = () => {
-    Axios.post("http://localhost:3001/create").then(() => {
-      console.log("success");
-    });
-  };
-
-  return (
-    <div className="App">
-      <NavBar />
-      <button onClick={addEmployee}>Add Employee</button>
-      <ImageSlider slides={SliderData} />
-      <Footer />
-    </div>
-  );
-}
-
-export default App;
+ export default App;

@@ -1,47 +1,80 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import "bootstrap/dist/css/bootstrap.min.css";
-import logo from "./Pictures/logo.png";
-import "./styles.css";
+import React, { useState, useEffect } from 'react';
+import { Button } from './Button';
+import { Link } from 'react-router-dom';
+import './Navbar.css';
 
-const NavBar = () => (
-  <header className="navbar">
-    <div className="navbar__title navbar__item">
-      <div>
-        <blockquote class="blockquote text-center">
-          <img className="photo" src={logo} alt="Made with leftovers" />
-        </blockquote>
-      </div>
-    </div>
-    <div className="navbar__item">
-      <a href="/Home" style={{ color: "white" }}>
-        {" "}
-        Home
-      </a>
-    </div>
+ function Navbar() {
+   const [click, setClick] = useState(false);
+   const [button, setButton] = useState(true);
 
-    <div className="navbar__item">
-      <a href="/Contact" style={{ color: "white" }}>
-        Contact
-      </a>
-    </div>
-    <div className="navbar__item">
-      <a href="/Help" style={{ color: "white" }}>
-        {" "}
-        Help
-      </a>
-    </div>
-  </header>
-);
+   const handleClick = () => setClick(!click);
+   const closeMobileMenu = () => setClick(false);
 
-export default NavBar;
+   const showButton = () => {
+     if (window.innerWidth <= 960) {
+       setButton(false);
+     } else {
+       setButton(true);
+     }
+   };
 
-const FooterContainer = styled.footer`
-  ul li a {
-    color: var(--mainGrey);
-  }
+   useEffect(() => {
+     showButton();
+   }, []);
 
-  ul li a:hover {
-    color: var(--mainLight);
-  }
-`;
+   window.addEventListener('resize', showButton);
+
+   return (
+     <>
+       <nav className='navbar'>
+         <div className='navbar-container'>
+           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+             MADE WITH LEFTOVERS
+             <i class='fab fa-typo3' />
+           </Link>
+           <div className='menu-icon' onClick={handleClick}>
+             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+           </div>
+           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+             <li className='nav-item'>
+               <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                 Home
+               </Link>
+             </li>
+             <li className='nav-item'>
+               <Link
+                 to='/services'
+                 className='nav-links'
+                 onClick={closeMobileMenu}
+               >
+                  Add Your Own Recipes
+               </Link>
+             </li>
+             <li className='nav-item'>
+               <Link
+                 to='/products'
+                 className='nav-links'
+                 onClick={closeMobileMenu}
+               >
+                 Favourites
+               </Link>
+             </li>
+
+             <li>
+               <Link
+                 to='/sign-up'
+                 className='nav-links-mobile'
+                 onClick={closeMobileMenu}
+               >
+                 Sign Up
+               </Link>
+             </li>
+           </ul>
+           {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+         </div>
+       </nav>
+     </>
+   );
+ }
+
+ export default Navbar;
