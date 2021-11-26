@@ -1,47 +1,50 @@
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
-// const cors = require("cors");
+const cors = require("cors");
 
-// app.use(cors());
-// app.use(express.json());
+app.use(cors());
+app.use(express.json());
 
 const db = mysql.createConnection({
-  user: "hbstudent",
+  user: "wordpressuser",
   host: "localhost",
-  password: "W33kllly!",
-  database: "hb-01-one-to-one-uni",
+  password: "M0nthllly!",
+  database: "madewithleftovers",
 });
 
-app.post("/create", (req, res) => {
-  const name = "games";
-  const age = "22";
-  const country = "email";
-  const position = "2";
-  //   const wage = req.body.wage;
+app.post("/createUser", (req, res) => {
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname;
+  const email = req.body.email;
+  const password = req.body.password;
+  const dob = req.body.dob;
 
   db.query(
-    "INSERT INTO instructor (first_name, last_name, email, instructor_detail_id) VALUES (?,?,?,?)",
-    [name, age, country, position],
+    "INSERT INTO usercred (first_name, last_name, email, password, dob) VALUES (?,?,?,?,?)",
+    [firstname, lastname, email, password, dob],
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
-        res.send("Values Inserted");
+        res.send("values inserted");
       }
     }
   );
 });
 
-// app.get("/employees", (req, res) => {
-//   db.query("SELECT * FROM employees", (err, result) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.send(result);
-//     }
-//   });
-// });
+app.post("/searchRecepie", (req, res) => {
+  const id = req.body.id;
+  console.log(id);
+
+  db.query("SELECT * FROM instructor WHERE id = ?", [id], (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
 
 // app.put("/update", (req, res) => {
 //   const id = req.body.id;
