@@ -19,6 +19,7 @@ app.post("/createUser", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   const dob = req.body.dob;
+  console.log(email);
 
   db.query(
     "INSERT INTO usercred (first_name, last_name, email, password, dob) VALUES (?,?,?,?,?)",
@@ -44,6 +45,24 @@ app.post("/searchRecepie", (req, res) => {
       res.send(result);
     }
   });
+});
+
+app.get("/searchUser", (req, res) => {
+  const loginEmail = req.query.loginEmail;
+  const loginPassword = req.query.loginPassword;
+  console.log(loginEmail);
+  db.query(
+    "SELECT * FROM usercred WHERE email = ? AND password=?",
+    [loginEmail, loginPassword],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result);
+        res.send(result);
+      }
+    }
+  );
 });
 
 // app.put("/update", (req, res) => {

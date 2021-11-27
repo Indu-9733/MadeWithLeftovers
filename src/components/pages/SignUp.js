@@ -28,24 +28,26 @@ export default function SignUp() {
   } = useForm();
 
   const onSubmit = () => {
-    Axios.post("http://localhost:3001/createUser", {
-      firstname: firstname,
-      lastname: lastname,
-      email: email,
-      password: password,
-      dob: dob,
-    }).then(() => {
-      setEmployeeList([
-        ...employeeList,
-        {
+    Axios.get("http://localhost:3001/searchUser", {
+      params: {
+        loginEmail: email,
+        loginPassword: password,
+      },
+    }).then((response) => {
+      console.log(response);
+      if (response.data.length != 0) {
+        console.log("print user exits");
+      } else {
+        Axios.post("http://localhost:3001/createUser", {
           firstname: firstname,
           lastname: lastname,
           email: email,
           password: password,
           dob: dob,
-        },
-      ]);
+        }).then(() => {});
+      }
     });
+
     console.log("Done!");
   };
 
