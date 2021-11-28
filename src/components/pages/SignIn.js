@@ -1,20 +1,28 @@
 import React, { useEffect } from "react";
-// import "././App.css";
+import "../../App.css";
 import { Form, Button } from "semantic-ui-react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import Axios from "axios";
 import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import moment from "moment";
 
-export default function SignIp() {
+
+export default function SignIn() {
   // const [registerEmail, setRegisterEmail] = useState("");
   // const [registerPassword, setRegisterPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
-  const [user, setUser] = useState({});
+  const [logInUser, setLogInUser] = useState("");
+  Axios.defaults.withCredentials = true;
+
+  useEffect(() => {
+    Axios.get("http://localhost:3001/login").then((response) => {
+      if (response.data.loggedIn == true)
+        setLogInUser(response.data.user[0].first_name);
+    });
+  }, []);
 
   const {
     control,
@@ -30,16 +38,17 @@ export default function SignIp() {
         loginPassword: loginPassword,
       },
     }).then((response) => {
-      console.log(response);
-      if(response.data !=null)
-      {
-          // go to different page
+      if (response.data == false) {
+        console.log("User does not Exist");
+      } else {
+        if (response.data.length != 1) console.log(response.data.message);
+        else {
+          console.log(response);
+          setLogInUser(response.data[0].first_name);
+          setLoginEmail("");
+          setLoginPassword("");
+        }
       }
-      else
-      {
-        //   user does not exist
-      }
-
     });
   };
 
@@ -56,7 +65,7 @@ export default function SignIp() {
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
             })}
             onChange={(event) => {
-              setLoginEmail(event.target.value);
+              setLoginEmail(event.target.value.toLowerCase());
             }}
           />
         </Form.Field>
@@ -80,6 +89,7 @@ export default function SignIp() {
         )}
         <Button type="submit">Submit</Button>
       </Form>
+      <h1>welcome {logInUser}</h1>
     </div>
   );
 }

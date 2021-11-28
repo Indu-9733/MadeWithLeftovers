@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-// import "././App.css";
+import "../../App.css";
 import { Form, Button } from "semantic-ui-react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import DatePicker from "react-datepicker";
@@ -35,7 +35,7 @@ export default function SignUp() {
       },
     }).then((response) => {
       console.log(response);
-      if (response.data.length != 0) {
+      if (response.data != false) {
         console.log("print user exits");
       } else {
         Axios.post("http://localhost:3001/createUser", {
@@ -90,7 +90,7 @@ export default function SignUp() {
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
             })}
             onChange={(event) => {
-              setEmail(event.target.value);
+              setEmail(event.target.value.toLowerCase());
             }}
           />
         </Form.Field>

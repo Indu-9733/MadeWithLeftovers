@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./components/NavBar";
 import "./App.css";
 import Home from "./components/pages/Home";
@@ -6,10 +6,19 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Services from "./components/pages/Services";
 import Products from "./components/pages/Products";
 import SignUp from "./components/pages/SignUp";
+import { observer } from "mobx-react-lite";
 import SignIn from "./components/pages/SignIn";
 import SearchBar from "./components/SearchBar";
+import Axios from "axios";
 
 function App() {
+  Axios.defaults.withCredentials = true;
+  useEffect(() => {
+    Axios.get("http://localhost:3001/login").then((response) => {
+      console.log(response);
+    });
+  }, []);
+
   return (
     <>
       <Router>
@@ -27,4 +36,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);

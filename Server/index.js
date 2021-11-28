@@ -2,9 +2,33 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
+const session = require("express-session");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const { keys } = require("mobx");
 
-app.use(cors());
 app.use(express.json());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(
+  session({
+    key: "userId",
+    secret: "noSecret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 60 * 60 * 24 * 1000,
+    },
+  })
+);
 
 const db = mysql.createConnection({
   user: "wordpressuser",
@@ -47,19 +71,35 @@ app.post("/searchRecepie", (req, res) => {
   });
 });
 
+app.get("/login", (req, res) => {
+  if (req.session.user) {
+    res.send({ loggedIn: true, user: req.session.user });
+  } else res.send({ loggedIn: false });
+});
+
 app.get("/searchUser", (req, res) => {
   const loginEmail = req.query.loginEmail;
   const loginPassword = req.query.loginPassword;
-  console.log(loginEmail);
+  console.log(loginPassword);
   db.query(
-    "SELECT * FROM usercred WHERE email = ? AND password=?",
-    [loginEmail, loginPassword],
+    "SELECT * FROM usercred WHERE email = ?",
+    [loginEmail],
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
-        console.log(result);
-        res.send(result);
+        console.log(result[0].password);
+        if (result == "") {
+          console.log("User does not exist");
+          res.send(false);
+        } else if (loginPassword != result[0].password) {
+          console.log("wrong username/password");
+          res.send({ message: "wrong username/password" });
+        } else {
+          req.session.user = result;
+          console.log(req.session.user);
+          res.send(result);
+        }
       }
     }
   );
