@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
-import "../../App.css";
+
 import { Form, Button } from "semantic-ui-react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import Axios from "axios";
 import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import signincss from "./CSS/signin.module.css";
+import signincss from "./CSS/signin.module.css"
 
-export default function SignIn() {
+
+ function SignIn() {
   // const [registerEmail, setRegisterEmail] = useState("");
   // const [registerPassword, setRegisterPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
@@ -55,8 +56,9 @@ export default function SignIn() {
   return (
     <div>
       <Form onSubmit={handleSubmit(onSubmit)}>
+        
         <Form.Field>
-          <input
+          <input className={signincss['ap']}
             placeholder="Email"
             type="email"
             {...register("email", {
@@ -69,12 +71,14 @@ export default function SignIn() {
             }}
           />
         </Form.Field>
+        
         {errors.email && (
-          <p className="text-error">Please enter a valid email.</p>
+          <p className={signincss["text-error"]}>Please enter a valid email.</p>
         )}
-
+    
+     
         <Form.Field>
-          <input
+          <input className={signincss['ip']}
             placeholder="Password"
             type="password"
             {...register("password", {
@@ -86,9 +90,15 @@ export default function SignIn() {
           />
         </Form.Field>
         {errors.password && (
-          <p className="text-error">Password cannot be empty.</p>
+          <p className={signincss["text-error"]}>Password canot be empty.</p>
         )}
-        <Button type="submit">Submit</Button>
+    
+
+        
+        <Button
+        type="submit" input className={signincss['sp']} >SUBMIT
+        </Button>
+        
       </Form>
       <h1 Style="font-size:80px;">WELCOME{logInUser}</h1>
       <h2 Style="font-size:40px;margin-left:45%;margin-top:70px;font-family:monospace;font-weight:lighter;">
@@ -97,3 +107,5 @@ export default function SignIn() {
     </div>
   );
 }
+
+export default SignIn;

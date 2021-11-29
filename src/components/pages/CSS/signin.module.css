@@ -1,5 +1,5 @@
 Form {
-  width: 350px;
+  width: 600px;
   border: 5px double rgb(22, 22, 22);
   mask-border-repeat:inherit;
   top: 50%;
@@ -12,10 +12,44 @@ Form {
 }
 
 .text-error {
-  font-size: 10px;
+  font-size: 20px;
 }
 
 
 .Form-Field { 
   font-size: 10px;
+  text-align: center;
+}
+
+.ip{
+  width: 400px;
+  height: 48px;
+  margin: auto;
+  font-size: large;
+  position: relative;
+}
+
+.ap{
+  width: 400px;
+  height: 48px;
+  margin: auto;
+  font-size: large;
+  position: relative;
+
+}
+
+.sp{
+  width: 400px;
+  height: 48px;
+  margin: auto;
+  font-size: large;
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+}
+
+.sp:hover {
+  background-color: #4CAF50;
+  color: white;
+
 }

@@ -7,7 +7,7 @@ video {
 }
 
 .hero-container {
-  background: url("C:\GitHub\hcirepo\src\components\images\b8e14a14af9434aa5ccc0376a47a5237.jpg")
+  background: url("./images/b8e14a14af9434aa5ccc0376a47a5237.jpg")
     center center/cover no-repeat;
   height: 100vh;
   width: 100%;
