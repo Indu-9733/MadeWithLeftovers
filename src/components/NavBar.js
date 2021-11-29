@@ -53,7 +53,7 @@ import './Navbar.css';
              </li>
              <li className='nav-item'>
                <Link
-                 to='/products'
+                 to='/favourites'
                  className='nav-links'
                  onClick={closeMobileMenu}
                >
