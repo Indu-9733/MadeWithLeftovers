@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import MealList from "./mealList";
+import MealList from "../mealList";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState(""); //text written by user in search box

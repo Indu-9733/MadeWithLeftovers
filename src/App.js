@@ -8,8 +8,9 @@ import Products from "./components/pages/Products";
 import SignUp from "./components/pages/SignUp";
 import { observer } from "mobx-react-lite";
 import SignIn from "./components/pages/SignIn";
-import SearchBar from "./components/SearchBar";
+import SearchBar from "./components/pages/SearchBar";
 import Axios from "axios";
+import FindRecepie from "./components/pages/FindRecepie";
 
 function App() {
   Axios.defaults.withCredentials = true;
@@ -30,6 +31,7 @@ function App() {
           <Route path="/sign-up" component={SignUp} />
           <Route path="/sign-in" component={SignIn} />
           <Route path="/search-bar" component={SearchBar} />
+          <Route path="/find-recepie" component={FindRecepie} />
         </Switch>
       </Router>
     </>

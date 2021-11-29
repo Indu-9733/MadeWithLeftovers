@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { Button3 } from "./Button3";
+import { GetStartedButton } from "./GetStartedButton";
 import { Button } from "./Button";
 import "./HeroSection.css";
 
@@ -11,13 +11,13 @@ function HeroSection() {
       <h1>START COOKING TODAY</h1>
       <p>What are you waiting for?</p>
       <div className="hero-btns">
-        <Button3
+        <GetStartedButton
           className="btns"
           buttonStyle="btn--outline"
           buttonSize="btn--large"
         >
           GET STARTED
-        </Button3>
+        </GetStartedButton>
         <Button
           className="btns"
           buttonStyle="btn--primary"
