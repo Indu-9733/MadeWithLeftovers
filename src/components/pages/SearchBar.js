@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MealList from "../mealList";
-import Footer from '../Footer';
-
+import sbarcss from "./CSS/searchbar.module.css";
+import glass from "../../components/images/glass.jpg";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState(""); //text written by user in search box
@@ -64,9 +64,7 @@ const SearchBar = () => {
     )
       .then((resp) => resp.json())
       .catch((err) => console.log(err));
-      
   };
-
 
   // async function fetchAutoComplete(searchTerm) {
   //   fetch(
@@ -82,7 +80,6 @@ const SearchBar = () => {
   // }
 
   const searchInputField = React.createRef();
- 
 
   return (
     <div>
@@ -117,7 +114,12 @@ const SearchBar = () => {
               {suggestion.title}
             </div>
           ))}
-        <button onClick={() => getRecepie(recepie)}>Search</button>
+        <img
+          onClick={() => getRecepie(recepie)}
+          className={sbarcss["glass"]}
+          alt="magnifying glass"
+          src={glass}
+        />
         {mealData && <MealList mealData={mealData} />}
       </div>
       {/* <button
@@ -128,11 +130,8 @@ const SearchBar = () => {
       >
         Search
       </button> */}
-     
     </div>
-   
   );
-
 };
 
 export default SearchBar;

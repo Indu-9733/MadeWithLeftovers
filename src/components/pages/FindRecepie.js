@@ -7,7 +7,6 @@ import { Form, Button } from "semantic-ui-react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { image } from "./test";
 import styles from "./CSS/findRecp.module.css";
-import logo from "../Pictures/logo.png";
 
 // find recepie for ingradients
 export default function FindRecepie() {
