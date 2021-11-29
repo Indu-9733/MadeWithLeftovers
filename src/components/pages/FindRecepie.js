@@ -6,7 +6,7 @@ import MealDataIng from "../mealDataIng";
 import { Form, Button } from "semantic-ui-react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { image } from "./test";
-import styles from "../styles.css";
+import styles from "./CSS/findRecp.module.css";
 import logo from "../Pictures/logo.png";
 
 // find recepie for ingradients
@@ -23,17 +23,16 @@ export default function FindRecepie() {
 
   const findRecepie = (data) => {
     Object.keys(data).forEach((key) => {
-      if (data[key]) 
-        checkIng=checkIng+data[key]+",+";
+      if (data[key]) checkIng = checkIng + data[key] + ",+";
     });
-    checkIng= checkIng.substring(0,checkIng.length-2)
+    checkIng = checkIng.substring(0, checkIng.length - 2);
     fetch(
       `https://api.spoonacular.com/recipes/findByIngredients?apiKey=696b0c4fb4de43bd9c94815931d4d998&ingredients=${checkIng}&number=2&ranking=1`
     )
       .then((response) => response.json())
       .then((data) => {
         setMealDataIng(data);
-        checkIng=""
+        checkIng = "";
         console.log(mealDataIng);
       })
       .catch(() => {
