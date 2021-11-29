@@ -8,6 +8,7 @@ import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 
 
+
 export default function SignIn() {
   // const [registerEmail, setRegisterEmail] = useState("");
   // const [registerPassword, setRegisterPassword] = useState("");
@@ -56,8 +57,10 @@ export default function SignIn() {
     <div>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Field>
+        
           <input
             placeholder="Email"
+         
             type="email"
             {...register("email", {
               required: true,
@@ -72,7 +75,9 @@ export default function SignIn() {
         {errors.email && (
           <p className="text-error">Please enter a valid email.</p>
         )}
+
         <Form.Field>
+       
           <input
             placeholder="Password"
             type="password"
@@ -89,7 +94,8 @@ export default function SignIn() {
         )}
         <Button type="submit">Submit</Button>
       </Form>
-      <h1>welcome {logInUser}</h1>
+     <h1 Style="font-size:80px;">WELCOME{logInUser}</h1> 
+     <h2 Style= "font-size:40px;margin-left:45%;margin-top:70px;font-family:monospace;font-weight:lighter;">SIGN IN</h2>
     </div>
   );
-}
+} 
