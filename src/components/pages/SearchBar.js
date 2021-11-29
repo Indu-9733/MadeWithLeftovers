@@ -122,14 +122,7 @@ const SearchBar = () => {
         />
         {mealData && <MealList mealData={mealData} />}
       </div>
-      {/* <button
-        className="clickable"
-        id="search-button"
-        data-searchquery={searchQuery}
-        onClick="http://www.foodista.com/recipe/FB3GPT43/rice-pilaf"
-      >
-        Search
-      </button> */}
+      <div></div>
     </div>
   );
 };

@@ -39,30 +39,6 @@ export default function FindRecepie() {
       });
   };
 
-  //   const onSubmit = () => {
-  //     Axios.get("http://localhost:3001/searchUser", {
-  //       params: {
-  //         loginEmail: email,
-  //         loginPassword: password,
-  //       },
-  //     }).then((response) => {
-  //       console.log(response);
-  //       if (response.data != false) {
-  //         console.log("print user exits");
-  //       } else {
-  //         Axios.post("http://localhost:3001/createUser", {
-  //           firstname: firstname,
-  //           lastname: lastname,
-  //           email: email,
-  //           password: password,
-  //           dob: dob,
-  //         }).then(() => {});
-  //       }
-  //     });
-
-  //     console.log("Done!");
-  //   };
-
   return (
     <div>
       <Form onSubmit={handleSubmit(findRecepie)}>
