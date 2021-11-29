@@ -58,6 +58,28 @@ app.post("/createUser", (req, res) => {
   );
 });
 
+app.post("/createRecepie", (req, res) => {
+  const recepiName = req.body.recepiName;
+  const recepieCat = req.body.recepieCat;
+  const recepiePrepTime = req.body.recepiePrepTime;
+  const recepieIng = req.body.recepieIng;
+  const recepieLink = req.body.recepieLink;
+  const doc = req.body.doc;
+  const userid = req.body.recpUserId;
+
+  db.query(
+    "INSERT INTO userrecepie (recp_cat, user_id, recp_title, recp_ingredient, recp_prepTime, recp_link) VALUES (?,?,?,?,?,?)",
+    [recepieCat, userid, recepiName, recepieIng, recepiePrepTime, recepieLink],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("values inserted");
+      }
+    }
+  );
+});
+
 app.post("/searchRecepie", (req, res) => {
   const id = req.body.id;
   console.log(id);
@@ -80,7 +102,7 @@ app.get("/login", (req, res) => {
 app.get("/searchUser", (req, res) => {
   const loginEmail = req.query.loginEmail;
   const loginPassword = req.query.loginPassword;
-  console.log(loginPassword);
+  // console.log(loginPassword);
   db.query(
     "SELECT * FROM usercred WHERE email = ?",
     [loginEmail],
@@ -88,7 +110,7 @@ app.get("/searchUser", (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        console.log(result[0].password);
+        // console.log(result[0].password);
         if (result == "") {
           console.log("User does not exist");
           res.send(false);
@@ -97,7 +119,7 @@ app.get("/searchUser", (req, res) => {
           res.send({ message: "wrong username/password" });
         } else {
           req.session.user = result;
-          console.log(req.session.user);
+          // console.log(req.session.user);
           res.send(result);
         }
       }

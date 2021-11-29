@@ -10,24 +10,22 @@ import moment from "moment";
 import { category } from "./test";
 
 export default function Services() {
-  let dt = new Date();
+  Axios.defaults.withCredentials = true;
+  const [recpUserId, setRecpUserId] = useState("");
   const [recepiName, setRecepiName] = useState("");
   const [recepieCat, setRecepieCat] = useState("");
-  const [recepiePrepTime, setRecepiePrepTime] = useState("");
-  const [recepieIng, setRecepieIng] = useState(0);
-  const [doc, setDoc] = useState(moment());
+  // const [recepiePrepTime, setRecepiePrepTime] = useState([]);
+  var recepiePrepTime = "";
+  const [recepieIng, setRecepieIng] = useState("");
   const [recepieLink, setRecepieLink] = useState("");
-  const [firstname, setFirstName] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [dob, setDob] = useState(moment());
-  const [dob1, setDob1] = useState(null);
-  const [employeeList, setEmployeeList] = useState([]);
-  const maxDate = dt.setDate(dt.getDate() - 3382);
-  const minDate = dt.setDate(dt.getDate() - 25566);
+  const doc = moment(new Date()).format("yyyy-MM-DD");
 
-  const displayEmojiName = (event) => alert(event.target.id);
+  useEffect(() => {
+    Axios.get("http://localhost:3001/login").then((response) => {
+      if (response.data.loggedIn == true)
+        setRecpUserId(response.data.user[0].user_id);
+    });
+  }, []);
 
   const {
     control,
@@ -36,26 +34,19 @@ export default function Services() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = () => {
-    Axios.get("http://localhost:3001/searchUser", {
-      params: {
-        loginEmail: email,
-        loginPassword: password,
-      },
-    }).then((response) => {
-      console.log(response);
-      if (response.data != false) {
-        console.log("print user exits");
-      } else {
-        Axios.post("http://localhost:3001/createUser", {
-          firstname: firstname,
-          lastname: lastname,
-          email: email,
-          password: password,
-          dob: dob,
-        }).then(() => {});
-      }
-    });
+  const onSubmit = (data) => {
+    console.log(data.recepiePrepTimeM);
+    recepiePrepTime =
+      data.recepiePrepTimeH + " hours " + data.recepiePrepTimeM + " minutes";
+    Axios.post("http://localhost:3001/createRecepie", {
+      recpUserId: recpUserId,
+      recepiName: recepiName,
+      recepieCat: recepieCat,
+      recepiePrepTime: recepiePrepTime,
+      recepieIng: recepieIng,
+      recepieLink: recepieLink,
+      doc: doc,
+    }).then(() => {});
 
     console.log("Done!");
   };
@@ -79,7 +70,7 @@ export default function Services() {
         <Form.Field>
           <select
             placeholder="Type of Recepie"
-            {...register("recepieCat", { required: true})}
+            {...register("recepieCat", { required: true })}
             onChange={(event) => {
               setRecepieCat(event.target.value);
             }}
@@ -93,59 +84,62 @@ export default function Services() {
           <p className="text-error">Please check the Last Name</p>
         )}
         <Form.Field>
-        <select
-            placeholder="Type of Recepie"
-            {...register("recepieCat", { required: true})}
-            onChange={(event) => {
-              setRecepieCat(event.target.value);
-            }}
-          >
-            {category.map((hours) => (
-              <option value={hours.name}>{hours.name}</option>
-            ))}
-          </select>
+          <label> Preparation Time </label>
+          <input
+            placeholder="Hours"
+            type="number"
+            min="0"
+            max="48"
+            {...register("recepiePrepTimeH", {
+              required: true,
+            })}
+          />
+          <input
+            placeholder="Minutes"
+            type="number"
+            min="0"
+            max="59"
+            {...register("recepiePrepTimeM", {
+              required: true,
+            })}
+          />
         </Form.Field>
-        {errors.email && (
+        {errors.recepiePrepTime && (
           <p className="text-error">Please enter a valid email.</p>
         )}
         <Form.Field>
           <input
-            placeholder="Password"
-            type="password"
-            {...register("password", {
+            placeholder="Number of Ingredients"
+            type="number"
+            min="1"
+            max="20"
+            {...register("recepieIng", {
               required: true,
-              pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/,
             })}
             onChange={(event) => {
-              setPassword(event.target.value);
+              setRecepieIng(event.target.value);
             }}
           />
         </Form.Field>
-        {errors.password && (
+        {errors.recepieIng && (
           <p className="text-error">
             Please enter a valid Password. Password can be 6-15 characters long
             and must include numbers and uppercase.
           </p>
         )}
         <Form.Field>
-          <Controller
-            control={control}
-            name="DatePicker"
-            dateFormat="yyyy-MM-dd"
-            render={({ field: { onChange, onBlur, value, ref } }) => (
-              <DatePicker
-                placeholderText="Select date of birth"
-                onChange={(dob) => setDob(moment(dob).format("yyyy-MM-DD"))}
-                onBlur={onBlur}
-                selected={dob1}
-                minDate={minDate}
-                maxDate={maxDate}
-                dateFormat="yyyy-MM-dd"
-              />
-            )}
+          <input
+            placeholder="Recepie URL*"
+            type="url"
+            {...register("recepieLink", { required: true })}
+            onChange={(event) => {
+              setRecepieLink(event.target.value);
+            }}
           />
         </Form.Field>
-
+        {errors.recepiName && (
+          <p className="text-error">Title cannot be empty</p>
+        )}
         <Button type="submit">Submit</Button>
       </Form>
     </div>
