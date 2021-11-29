@@ -38,8 +38,17 @@ import './Navbar.css';
            </div>
            <ul className={click ? 'nav-menu active' : 'nav-menu'}>
              <li className='nav-item'>
-               <Link to='/search-bar' className='nav-links' onClick={closeMobileMenu}>
+               <Link to='/' className='nav-links' onClick={closeMobileMenu}>
                  Home
+               </Link>
+             </li>
+             <li className='nav-item'>
+               <Link
+                 to='/search-bar'
+                 className='nav-links'
+                 onClick={closeMobileMenu}
+               >
+                 Search
                </Link>
              </li>
              <li className='nav-item'>
