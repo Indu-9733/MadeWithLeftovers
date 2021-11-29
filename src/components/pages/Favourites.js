@@ -2,7 +2,7 @@ import React from 'react';
  import './Favourites.css';
  import CardItem from './CardItem2';
 
- 
+ <h1>hdhsfkjs</h1> 
 function Favourites() {
    return (
      <div className='cards'>

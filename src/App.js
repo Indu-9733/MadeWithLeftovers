@@ -11,6 +11,7 @@ import SignIn from "./components/pages/SignIn";
 import SearchBar from "./components/pages/SearchBar";
 import Axios from "axios";
 import FindRecepie from "./components/pages/FindRecepie";
+import Favourites from './components/pages/Favourites';
 
 function App() {
   Axios.defaults.withCredentials = true;
@@ -32,6 +33,7 @@ function App() {
           <Route path="/sign-in" component={SignIn} />
           <Route path="/search-bar" component={SearchBar} />
           <Route path="/find-recepie" component={FindRecepie} />
+          <Route path='/favourites' component={Favourites} />
         </Switch>
       </Router>
     </>

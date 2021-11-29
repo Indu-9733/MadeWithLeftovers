@@ -20,7 +20,7 @@ function HeroSection() {
         </GetStartedButton>
         <Button
           className="btns"
-          buttonStyle="btn--primary"
+          buttonStyle="btn--outline"
           buttonSize="btn--large"
           onClick={console.log("hey")}
         >
