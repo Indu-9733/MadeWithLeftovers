@@ -18,14 +18,7 @@ function HeroSection() {
         >
           GET STARTED
         </GetStartedButton>
-        <Button
-          className="btns"
-          buttonStyle="btn--outline"
-          buttonSize="btn--large"
-          onClick={console.log("hey")}
-        >
-          WATCH VIDEOS <i className="far fa-play-circle" />
-        </Button>
+        
       </div>
     </div>
   );

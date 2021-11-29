@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MealList from "../mealList";
+import Footer from '../Footer';
+
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState(""); //text written by user in search box
@@ -62,7 +64,9 @@ const SearchBar = () => {
     )
       .then((resp) => resp.json())
       .catch((err) => console.log(err));
+      
   };
+
 
   // async function fetchAutoComplete(searchTerm) {
   //   fetch(
@@ -78,6 +82,7 @@ const SearchBar = () => {
   // }
 
   const searchInputField = React.createRef();
+ 
 
   return (
     <div>
@@ -123,8 +128,11 @@ const SearchBar = () => {
       >
         Search
       </button> */}
+     
     </div>
+   
   );
+
 };
 
 export default SearchBar;

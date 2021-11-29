@@ -7,7 +7,7 @@ import React from 'react';
  function Home() {
    return (
      <>
-       <HeroSection />
+       <HeroSection/>
        <Cards />
        <Footer />
      </>
