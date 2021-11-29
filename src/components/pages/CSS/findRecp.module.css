@@ -1,16 +1,11 @@
-* {
-  box-sizing: border-box;
-}
-
-.container {
-  position: relative;
-  width: 50%;
-  max-width: 300px;
+Form{
+  border: none;
+  padding: 100px;
 }
 
 .image {
   display: block;
-  width: 10%;
+  width: 100%;
   height: auto;
 }
 
@@ -31,4 +26,8 @@
 
 .container:hover .overlay {
   opacity: 0.5;
+}
+
+.check{
+ padding: 10px;
 }

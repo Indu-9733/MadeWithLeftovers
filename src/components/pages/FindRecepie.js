@@ -41,17 +41,24 @@ export default function FindRecepie() {
 
   return (
     <div>
+      
       <Form onSubmit={handleSubmit(findRecepie)}>
         <Form.Field>
-          <input
+          <input 
             type="checkbox"
             value="egg"
             id="myCheckbox1"
             {...register("myCheckbox1")}
           />
           <label for="myCheckbox1">
-            <img
+            <img className={styles['check']}
               src="https://spoonacular.com/cdn/ingredients_100x100/egg.png"
+              
+              alt="egg"
+            />
+            <img lassName={styles['check']}
+              src="https://spoonacular.com/cdn/ingredients_100x100/egg.png"
+              
               alt="egg"
             />
           </label>
@@ -75,6 +82,7 @@ export default function FindRecepie() {
           {mealDataIng && <MealDataIng mealDataIng={mealDataIng} />}
         </section>
       </Form>
+
     </div>
   );
 }

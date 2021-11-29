@@ -55,6 +55,12 @@ import signincss from "./CSS/signin.module.css"
 
   return (
     <div>
+      <h1 Style="font-size:80px;padding:10px">WELCOME{logInUser}</h1>
+      
+    
+      <forms>
+      <p Style="font-size:40px;padding-left:120px;margin-left:110px">  SIGN IN</p>
+       
       <Form onSubmit={handleSubmit(onSubmit)}>
         
         <Form.Field>
@@ -100,10 +106,8 @@ import signincss from "./CSS/signin.module.css"
         </Button>
         
       </Form>
-      <h1 Style="font-size:80px;">WELCOME{logInUser}</h1>
-      <h2 Style="font-size:40px;margin-left:45%;margin-top:70px;font-family:monospace;font-weight:lighter;">
-        SIGN IN
-      </h2>
+      
+      </forms>
     </div>
   );
 }
