@@ -7,6 +7,7 @@ import Axios from "axios";
 import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
+import signupcss from "./CSS/Signup.module.css";
 
 export default function SignUp() {
   let dt = new Date();
@@ -53,9 +54,11 @@ export default function SignUp() {
 
   return (
     <div>
+      <h1>SIGN UP</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
+      <br></br>
         <Form.Field>
-          <input
+          <input className={signupcss["la"]}
             placeholder="First Name"
             type="text"
             {...register("firstName", { required: true, maxLength: 15 })}
@@ -67,8 +70,9 @@ export default function SignUp() {
         {errors.firstName && (
           <p className="text-error">Please check the First Name</p>
         )}
+         <br></br>
         <Form.Field>
-          <input
+        <input className={signupcss["lb"]}
             placeholder="Last Name"
             type="text"
             {...register("lastName", { required: true, maxLength: 30 })}
@@ -80,8 +84,9 @@ export default function SignUp() {
         {errors.lastName && (
           <p className="text-error">Please check the Last Name</p>
         )}
+         <br></br>
         <Form.Field>
-          <input
+        <input className={signupcss["lc"]}
             placeholder="Email"
             type="email"
             {...register("email", {
@@ -97,8 +102,9 @@ export default function SignUp() {
         {errors.email && (
           <p className="text-error">Please enter a valid email.</p>
         )}
+         <br></br>
         <Form.Field>
-          <input
+        <input className={signupcss["ld"]}
             placeholder="Password"
             type="password"
             {...register("password", {
@@ -116,13 +122,14 @@ export default function SignUp() {
             and must include numbers and uppercase.
           </p>
         )}
+         <br></br>
         <Form.Field>
-          <Controller
+          <Controller 
             control={control}
             name="DatePicker"
             dateFormat="yyyy-MM-dd"
             render={({ field: { onChange, onBlur, value, ref } }) => (
-              <DatePicker
+              <DatePicker className={signupcss["le"]}
                 placeholderText="Select date of birth"
                 onChange={(dob) => setDob(moment(dob).format("yyyy-MM-DD"))}
                 onBlur={onBlur}
@@ -134,7 +141,11 @@ export default function SignUp() {
             )}
           />
         </Form.Field>
-        <Button type="submit">Submit</Button>
+        <br></br>
+        <br></br>
+        <Button type="submit" input className={signupcss["lf"]}>
+           SIGN UP
+          </Button>
       </Form>
     </div>
   );

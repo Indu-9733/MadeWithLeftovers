@@ -5,6 +5,7 @@
   margin-right: -50%;
   transform: translate(-50%, -50%);
   line-height: normal;
+ 
 }
 .suggestion{
   cursor:pointer;
@@ -47,8 +48,8 @@ input {
 .glass {
   display: inline-block;
   position: relative;
-  right: 50px;
-  top: 8px;
+  right: 45px;
+  top: 15px;
   width: 30px;
   height: 30px;
 }
@@ -77,5 +78,12 @@ input {
     position: relative;
     left: 0;
     bottom: 0;
+  }
+
+  .lol{
+  padding-right: 10%;
+  text-shadow: none;
+  font-size: xx-large;
+  
   }
 }

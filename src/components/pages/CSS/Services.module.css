@@ -1,3 +1,4 @@
+
 .reci{
   width: 400px;
   height: 48px;
@@ -5,6 +6,8 @@
   font-size: large;
   position: relative;
   border:solid;
+  margin-left: 450px;
+  
 }
 
 .ty{
@@ -12,12 +15,9 @@
     height: 40px;
     font-size: large;
     position: relative; 
+   margin-left: 460px;
+  
 
-}
-
-h4{
-    font-size: xx-large;
-    padding-left: 15px;
 }
 
 .sub{
@@ -28,6 +28,7 @@ h4{
         transition-duration: 0.4s;
         cursor: pointer;
         border-radius: 8px;
+        margin-left: 450px;
       
       }
       
@@ -44,6 +45,7 @@ h4{
   font-size: large;
   position: relative;
   border:solid;
+  margin-left: 450px;
 }
 
 .min{
@@ -53,6 +55,7 @@ h4{
     font-size: large;
     position: relative;
     border:solid;
+    margin-left: 450px;
 }
 
 .ing{
@@ -62,6 +65,7 @@ h4{
     font-size: large;
     position: relative;
     border:solid;
+    margin-left: 450px;
 }
 
 .ur{
@@ -71,4 +75,5 @@ h4{
     font-size: large;
     position: relative;
     border:solid;
+    margin-left: 450px;
 }

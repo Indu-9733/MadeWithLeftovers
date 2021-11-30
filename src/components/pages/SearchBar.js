@@ -86,7 +86,7 @@ const SearchBar = () => {
   return (
     <div className="Cards">
       <div >
-        <input
+        <input className={sbarcss["lol"]}
           ref={searchInputField}
           id="search-bar-input"
           className="col-md-12 input"

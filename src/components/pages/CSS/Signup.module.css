@@ -1,0 +1,67 @@
+.la{
+    width: 400px;
+    height: 48px;
+    padding: 20px;
+    font-size: large;
+    position: relative;
+    border:solid;
+    margin-left: 450px;
+  }
+
+  .lb{
+    width: 400px;
+    height: 48px;
+    padding: 20px;
+    font-size: large;
+    position: relative;
+    border:solid;
+    margin-left: 450px;
+  }
+
+.lc{
+    width: 400px;
+    height: 48px;
+    padding: 20px;
+    font-size: large;
+    position: relative;
+    border:solid;
+    margin-left: 450px;
+  }
+
+  .ld{
+    width: 400px;
+    height: 48px;
+    padding: 20px;
+    font-size: large;
+    position: relative;
+    border:solid;
+    margin-left: 450px;
+  }
+
+.le{
+    width: 400px;
+    height: 48px;
+    padding: 20px;
+    font-size: large;
+    position: relative;
+    border:solid;
+    margin-left: 450px;
+  }
+
+  .lf{
+    width: 400px;
+    height: 48px;
+    margin: auto;
+    font-size: large;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-left: 450px;
+  
+  }
+  
+  .lf:hover {
+    background-color: #4CAF50;
+    color: white;
+  
+  }

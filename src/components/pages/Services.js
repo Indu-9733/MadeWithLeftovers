@@ -55,8 +55,11 @@ export default function Services() {
   };
 
   return (
+    
     <div>
+      
     <div>
+      <h1>Add Your Own Recipes</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Field>
         <input className={services['reci']}
@@ -93,10 +96,10 @@ export default function Services() {
         <br></br>
         <br></br>
         <Form.Field>
-          <h4> Preparation Time </h4>
-          <br></br>
+         
+    
           <input className={services['hrs']}
-            placeholder="Hours"
+            placeholder="Preperation time: Hours"
             type="number"
             min="0"
             max="48"
@@ -108,7 +111,7 @@ export default function Services() {
           <br></br>
 
           <input className={services['min']}
-            placeholder="Minutes"
+            placeholder="Preperation time: Minutes"
             type="number"
             min="0"
             max="59"
