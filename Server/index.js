@@ -80,6 +80,23 @@ app.post("/createRecepie", (req, res) => {
   );
 });
 
+app.get("/fav", (req, res) => {
+  const userId = req.query.userId;
+  console.log(userId);
+  db.query(
+    "SELECT * from userfav WHERE user_id=? AND is_fav=1",
+    [userId],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result);
+        res.send(result);
+      }
+    }
+  );
+});
+
 app.post("/saveFav", (req, res) => {
   let isFav = req.body.isFav;
   const recpId = req.body.recpId;
@@ -89,17 +106,45 @@ app.post("/saveFav", (req, res) => {
   else isFav = 0;
   console.log(isFav);
 
-  // db.query(
-  //   "SELECT * INTO userfav (user_id,recp_id,is_fav) VALUES (?,?,?)",
-
   db.query(
-    "INSERT INTO userfav (user_id,recp_id,is_fav) VALUES (?,?,?)",
-    [userId, recpId, isFav],
+    "SELECT * from userfav WHERE user_id=? and recp_id=?",
+    [userId, recpId],
     (err, result) => {
       if (err) {
         console.log(err);
+      } else if (result.length != 0) {
+        // console.log(result[0].user_id);
+        if (
+          (result[0].is_fav == 1 && isFav == 1) ||
+          (result[0].is_fav == 0 && isFav == 0)
+        ) {
+        } else {
+          console.log("at update query" + result[0].is_fav);
+          console.log("at update query" + isFav);
+          db.query(
+            "UPDATE userfav SET is_Fav=? WHERE user_id=? and recp_id=?",
+            [isFav, userId, recpId],
+            (err, result) => {
+              if (err) {
+                console.log(err);
+              } else if (result) {
+                res.send(result);
+              }
+            }
+          );
+        }
       } else {
-        res.send("values inserted in fav column");
+        db.query(
+          "INSERT INTO userfav (user_id,recp_id,is_fav) VALUES (?,?,?)",
+          [userId, recpId, isFav],
+          (err, result) => {
+            if (err) {
+              console.log(err);
+            } else {
+              res.send("values inserted in fav column");
+            }
+          }
+        );
       }
     }
   );
@@ -121,13 +166,13 @@ app.post("/searchRecepie", (req, res) => {
 app.get("/login", (req, res) => {
   if (req.session.user) {
     res.send({ loggedIn: true, user: req.session.user });
-  } else res.send({ loggedIn: false});
+  } else res.send({ loggedIn: false });
 });
 
 app.get("/logout", (req, res) => {
   if (req.session.user) {
-    req.session.user= null ;
-    res.send({ loggedIn: false});
+    req.session.user = null;
+    res.send({ loggedIn: false });
   }
 });
 
