@@ -8,6 +8,7 @@ import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { category } from "./test";
+import Footer from "../Footer";
 
 export default function Services() {
   Axios.defaults.withCredentials = true;
@@ -52,6 +53,7 @@ export default function Services() {
   };
 
   return (
+    <div>
     <div>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Field>
@@ -142,6 +144,9 @@ export default function Services() {
         )}
         <Button type="submit">Submit</Button>
       </Form>
+    </div>
+    
+    <Footer />
     </div>
   );
 }

@@ -80,6 +80,31 @@ app.post("/createRecepie", (req, res) => {
   );
 });
 
+app.post("/saveFav", (req, res) => {
+  let isFav = req.body.isFav;
+  const recpId = req.body.recpId;
+  const userId = req.body.userId;
+  console.log(recpId);
+  if (isFav) isFav = 1;
+  else isFav = 0;
+  console.log(isFav);
+
+  // db.query(
+  //   "SELECT * INTO userfav (user_id,recp_id,is_fav) VALUES (?,?,?)",
+
+  db.query(
+    "INSERT INTO userfav (user_id,recp_id,is_fav) VALUES (?,?,?)",
+    [userId, recpId, isFav],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("values inserted in fav column");
+      }
+    }
+  );
+});
+
 app.post("/searchRecepie", (req, res) => {
   const id = req.body.id;
   console.log(id);

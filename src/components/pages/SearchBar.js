@@ -3,6 +3,8 @@ import axios from "axios";
 import MealList from "../mealList";
 import sbarcss from "./CSS/searchbar.module.css";
 import glass from "../../components/images/glass.jpg";
+import Spotify from "../spotify";
+import Cards from "../Cards";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState(""); //text written by user in search box
@@ -82,8 +84,8 @@ const SearchBar = () => {
   const searchInputField = React.createRef();
 
   return (
-    <div>
-      <div className="container">
+    <div className="Cards">
+      <div >
         <input
           ref={searchInputField}
           id="search-bar-input"
@@ -95,7 +97,7 @@ const SearchBar = () => {
           }}
           type="text"
           value={searchQuery}
-          placeholder=" &#128269; Get inspired by 1000's of recipes..."
+          placeholder="Get inspired by 1000's of recipes..."
           onBlur={() => {
             setTimeout(() => {
               setSuggestions([]);
@@ -108,7 +110,7 @@ const SearchBar = () => {
           suggestions.map((suggestion, i) => (
             <div
               key={i}
-              className="suggestion col-md-12 justify-content-md-center"
+              className={sbarcss['suggestion col-md-12 justify-content-md-center']}
               onMouseDown={() => handleSuggest(suggestion.title)}
             >
               {suggestion.title}
@@ -122,7 +124,9 @@ const SearchBar = () => {
         />
         {mealData && <MealList mealData={mealData} />}
       </div>
-      <div></div>
+
+      <div className="cards__container"><Spotify/></div>
+
     </div>
   );
 };
