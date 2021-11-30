@@ -11,7 +11,6 @@ import { category } from "./test";
 
 import services from "./CSS/Services.module.css";
 
-
 export default function Services() {
   Axios.defaults.withCredentials = true;
   const [recpUserId, setRecpUserId] = useState("");
@@ -57,6 +56,7 @@ export default function Services() {
   return (
     
     <div>
+<<<<<<< Updated upstream
       
     <div>
       <h1>Add Your Own Recipes</h1>
@@ -107,9 +107,74 @@ export default function Services() {
               required: true,
             })}
           />
+=======
+      <div>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <Form.Field>
+            <input
+              className={services["reci"]}
+              placeholder="Recipe title*"
+              type="text"
+              {...register("recepiName", { required: true, maxLength: 240 })}
+              onChange={(event) => {
+                setRecepiName(event.target.value);
+              }}
+            />
+          </Form.Field>
+          {errors.recepiName && (
+            <p className="text-error">Title cannot be empty</p>
+          )}
           <br></br>
           <br></br>
 
+          <Form.Field>
+            <select
+              className={services["ty"]}
+              placeholder="Type of Recipe"
+              {...register("recepieCat", { required: true })}
+              onChange={(event) => {
+                setRecepieCat(event.target.value);
+              }}
+            >
+              {category.map((hours) => (
+                <option value={hours.name}>{hours.name}</option>
+              ))}
+            </select>
+          </Form.Field>
+          {errors.recepieCat && <p className="text-error">Please Select one</p>}
+          <br></br>
+>>>>>>> Stashed changes
+          <br></br>
+          <Form.Field>
+            <h4> Preparation Time </h4>
+            <br></br>
+            <input
+              className={services["hrs"]}
+              placeholder="Hours"
+              type="number"
+              min="0"
+              max="48"
+              {...register("recepiePrepTimeH", {
+                required: true,
+              })}
+            />
+            <br></br>
+            <br></br>
+
+            <input
+              className={services["min"]}
+              placeholder="Minutes"
+              type="number"
+              min="0"
+              max="59"
+              {...register("recepiePrepTimeM", {
+                required: true,
+              })}
+            />
+          </Form.Field>
+          <br></br>
+
+<<<<<<< Updated upstream
           <input className={services['min']}
             placeholder="Preperation time: Minutes"
             type="number"
@@ -166,6 +231,47 @@ export default function Services() {
     </div>
     
    
+=======
+          {errors.recepiePrepTime && (
+            <p className="text-error">Please enter number.</p>
+          )}
+          <Form.Field>
+            <input
+              className={services["ing"]}
+              placeholder="Number of Ingredients"
+              type="number"
+              min="1"
+              max="20"
+              {...register("recepieIng", {
+                required: true,
+              })}
+              onChange={(event) => {
+                setRecepieIng(event.target.value);
+              }}
+            />
+          </Form.Field>
+          <br></br>
+          {errors.recepieIng && <p className="text-error"></p>}
+          <Form.Field>
+            <input
+              className={services["ur"]}
+              placeholder="Recipe URL*"
+              type="url"
+              {...register("recepieLink", { required: true })}
+              onChange={(event) => {
+                setRecepieLink(event.target.value);
+              }}
+            />
+          </Form.Field>
+          <br></br>
+          <br></br>
+          {errors.recepiName && <p className="text-error"> </p>}
+          <Button type="submit" input className={services["sub"]}>
+            SUBMIT
+          </Button>
+        </Form>
+      </div>
+>>>>>>> Stashed changes
     </div>
   );
 }

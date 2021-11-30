@@ -7,7 +7,7 @@ export default function MealList({ mealData }) {
   return (
     <main>
       <section className="nutrients">
-        <h1>Recepies</h1>
+        <h1>Recipes</h1>
         <ul Style="font-size:40px;margin-left:45%;margin-top:70px;font-family:monospace;font-weight:lighter;">
           <li>
             Showing: {mealData.number.toFixed(0)} of{" "}

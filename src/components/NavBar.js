@@ -52,6 +52,7 @@ function Navbar() {
                   Home
                 </Link>
               </li>
+
               <li className="nav-item">
                 <Link
                   to="/search-bar"
