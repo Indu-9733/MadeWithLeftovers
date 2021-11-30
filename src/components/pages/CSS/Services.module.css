@@ -1,0 +1,74 @@
+.reci{
+  width: 400px;
+  height: 48px;
+  padding: 20px;
+  font-size: large;
+  position: relative;
+  border:solid;
+}
+
+.ty{
+    width: 200px;
+    height: 40px;
+    font-size: large;
+    position: relative; 
+
+}
+
+h4{
+    font-size: xx-large;
+    padding-left: 15px;
+}
+
+.sub{
+        width: 400px;
+        height: 48px;
+        margin: auto;
+        font-size: large;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 8px;
+      
+      }
+      
+.sub:hover {
+        background-color: #4CAF50;
+        color: white;
+      
+    }
+
+.hrs{
+    width: 400px;
+  height: 48px;
+  padding: 20px;
+  font-size: large;
+  position: relative;
+  border:solid;
+}
+
+.min{
+    width: 400px;
+    height: 48px;
+    padding: 20px;
+    font-size: large;
+    position: relative;
+    border:solid;
+}
+
+.ing{
+    width: 400px;
+    height: 48px;
+    padding: 20px;
+    font-size: large;
+    position: relative;
+    border:solid;
+}
+
+.ur{
+    width: 400px;
+    height: 48px;
+    padding: 20px;
+    font-size: large;
+    position: relative;
+    border:solid;
+}

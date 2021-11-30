@@ -28,6 +28,37 @@ Form{
   opacity: 0.5;
 }
 
-.check{
- padding: 10px;
+
+h2{
+  padding-right: 10%;
+  text-shadow: none;
+  font-size: xx-large;
+  text-decoration: underline;
+
 }
+h3{
+  padding-right: 70%;
+  text-shadow: none;
+  font-size: xx-large;
+  text-decoration: underline;
+
+}
+
+.btn{
+  width: 400px;
+  height: 48px;
+  margin-right: auto;
+  font-size: large;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 8px;
+  
+  
+}
+
+.btn:hover {
+  background-color: #4CAF50;
+  color: white;
+
+}
+

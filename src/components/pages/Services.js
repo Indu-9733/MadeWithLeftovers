@@ -8,7 +8,9 @@ import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { category } from "./test";
-import Footer from "../Footer";
+
+import services from "./CSS/Services.module.css";
+
 
 export default function Services() {
   Axios.defaults.withCredentials = true;
@@ -57,7 +59,7 @@ export default function Services() {
     <div>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Field>
-          <input
+        <input className={services['reci']}
             placeholder="Recepie title*"
             type="text"
             {...register("recepiName", { required: true, maxLength: 240 })}
@@ -69,8 +71,11 @@ export default function Services() {
         {errors.recepiName && (
           <p className="text-error">Title cannot be empty</p>
         )}
+        <br></br>
+        <br></br>
+
         <Form.Field>
-          <select
+          <select className={services['ty']}
             placeholder="Type of Recepie"
             {...register("recepieCat", { required: true })}
             onChange={(event) => {
@@ -83,11 +88,14 @@ export default function Services() {
           </select>
         </Form.Field>
         {errors.recepieCat && (
-          <p className="text-error">Please check the Last Name</p>
+          <p className="text-error">Please Select one</p>
         )}
+        <br></br>
+        <br></br>
         <Form.Field>
-          <label> Preparation Time </label>
-          <input
+          <h4> Preparation Time </h4>
+          <br></br>
+          <input className={services['hrs']}
             placeholder="Hours"
             type="number"
             min="0"
@@ -96,7 +104,10 @@ export default function Services() {
               required: true,
             })}
           />
-          <input
+          <br></br>
+          <br></br>
+
+          <input className={services['min']}
             placeholder="Minutes"
             type="number"
             min="0"
@@ -106,11 +117,13 @@ export default function Services() {
             })}
           />
         </Form.Field>
+        <br></br>
+        
         {errors.recepiePrepTime && (
-          <p className="text-error">Please enter a valid email.</p>
+          <p className="text-error">Please enter number.</p>
         )}
         <Form.Field>
-          <input
+          <input className={services['ing']}
             placeholder="Number of Ingredients"
             type="number"
             min="1"
@@ -123,14 +136,13 @@ export default function Services() {
             }}
           />
         </Form.Field>
+        <br></br>
         {errors.recepieIng && (
           <p className="text-error">
-            Please enter a valid Password. Password can be 6-15 characters long
-            and must include numbers and uppercase.
           </p>
         )}
         <Form.Field>
-          <input
+          <input className={services['ur']}
             placeholder="Recepie URL*"
             type="url"
             {...register("recepieLink", { required: true })}
@@ -139,14 +151,18 @@ export default function Services() {
             }}
           />
         </Form.Field>
+        <br></br>
+        <br></br>
         {errors.recepiName && (
-          <p className="text-error">Title cannot be empty</p>
+          <p className="text-error"> </p>
         )}
-        <Button type="submit">Submit</Button>
+        <Button
+        type="submit" input className={services['sub']} >SUBMIT
+        </Button>
       </Form>
     </div>
     
-    <Footer />
+   
     </div>
   );
 }

@@ -51,6 +51,7 @@ forms {
   font-size: large;
   transition-duration: 0.4s;
   cursor: pointer;
+  border-radius: 8px;
 
 }
 
