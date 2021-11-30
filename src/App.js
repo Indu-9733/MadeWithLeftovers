@@ -8,6 +8,7 @@ import Products from "./components/pages/Products";
 import SignUp from "./components/pages/SignUp";
 import { observer } from "mobx-react-lite";
 import SignIn from "./components/pages/SignIn";
+import SignOut from "./components/pages/SignOut";
 import SearchBar from "./components/pages/SearchBar";
 import Axios from "axios";
 import FindRecepie from "./components/pages/FindRecepie";
@@ -35,6 +36,7 @@ function App() {
           <Route path="/search-bar" component={SearchBar} />
           <Route path="/find-recepie" component={FindRecepie} />
           <Route path="/favourites" component={Favourites} />
+          <Route path="/sign-out" component={SignOut} />
         </Switch>
       </Router>
     </>

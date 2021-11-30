@@ -121,7 +121,14 @@ app.post("/searchRecepie", (req, res) => {
 app.get("/login", (req, res) => {
   if (req.session.user) {
     res.send({ loggedIn: true, user: req.session.user });
-  } else res.send({ loggedIn: false });
+  } else res.send({ loggedIn: false});
+});
+
+app.get("/logout", (req, res) => {
+  if (req.session.user) {
+    req.session.user= null ;
+    res.send({ loggedIn: false});
+  }
 });
 
 app.get("/searchUser", (req, res) => {
