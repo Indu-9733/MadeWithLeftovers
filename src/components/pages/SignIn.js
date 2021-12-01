@@ -27,8 +27,9 @@ function SignIn() {
   const {
     control,
     register,
-    handleSubmit,
+    reset,
     formState: { errors },
+    handleSubmit,
   } = useForm();
 
   const onSubmit = () => {
@@ -50,14 +51,17 @@ function SignIn() {
         }
       }
     });
+    reset();
   };
 
   return (
     <div>
-      <h1 Style="font-size:80px;padding:10px">WELCOME{logInUser}</h1>
+      <h1 Style="font-size:60px;padding:30px">
+        WELCOME {logInUser.toUpperCase()}
+      </h1>
 
       <forms>
-        <p Style="font-size:40px;padding-left:120px;margin-left:110px">
+        <p Style="font-size:40px;padding-left:155px;margin-left:110px;padding-top:30px">
           {" "}
           SIGN IN
         </p>

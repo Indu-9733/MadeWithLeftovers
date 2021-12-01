@@ -24,6 +24,7 @@ export default function FindRecepie() {
   const {
     control,
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -35,7 +36,7 @@ export default function FindRecepie() {
     });
     checkIng = checkIng.substring(0, checkIng.length - 2);
     fetch(
-      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=696b0c4fb4de43bd9c94815931d4d998&ingredients=${checkIng}&number=2&ranking=1`
+      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=696b0c4fb4de43bd9c94815931d4d998&ingredients=${checkIng}&number=5&ranking=1`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -46,6 +47,7 @@ export default function FindRecepie() {
       .catch(() => {
         console.log("error");
       });
+    reset();
   };
 
   return (
@@ -136,7 +138,12 @@ export default function FindRecepie() {
         </Form.Field>
         <br></br>
         <Form.Field>
-          <input type="checkbox" value="mushroom" id="cb3" {...register("cb3")} />
+          <input
+            type="checkbox"
+            value="mushroom"
+            id="cb3"
+            {...register("cb3")}
+          />
           <label for="cb3">
             <img
               src="src/components/images/mushroom_100x100.jpeg"
@@ -187,17 +194,17 @@ export default function FindRecepie() {
             />
           </label>
         </Form.Field>
-          <Button type="submit" input className={styles["btn"]}>
-            GENERATE RECIPE
-          </Button>
-<br></br>
-<br></br>
+        <Button type="submit" input className={styles["btn"]}>
+          GENERATE RECIPE
+        </Button>
+        <br></br>
+        <br></br>
 
-<br></br>
-<br></br>
-          <section className="meals">
-            {mealDataIng && <MealDataIng mealDataIng={mealDataIng} />}
-          </section>
+        <br></br>
+        <br></br>
+        <section className="meals">
+          {mealDataIng && <MealDataIng mealDataIng={mealDataIng} />}
+        </section>
       </Form>
     </div>
   );

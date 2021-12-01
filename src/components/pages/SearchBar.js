@@ -21,7 +21,7 @@ const SearchBar = () => {
 
   const getRecepie = (recepie) => {
     fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=696b0c4fb4de43bd9c94815931d4d998&query=${recepie}&number=2`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=696b0c4fb4de43bd9c94815931d4d998&query=${recepie}&number=5`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -62,7 +62,7 @@ const SearchBar = () => {
 
   const fetchAutoComplete = (searchQuery) => {
     return fetch(
-      `https://api.spoonacular.com/recipes/autocomplete?apiKey=696b0c4fb4de43bd9c94815931d4d998&number=2&query=${searchQuery}`
+      `https://api.spoonacular.com/recipes/autocomplete?apiKey=696b0c4fb4de43bd9c94815931d4d998&number=5&query=${searchQuery}`
     )
       .then((resp) => resp.json())
       .catch((err) => console.log(err));
@@ -85,8 +85,9 @@ const SearchBar = () => {
 
   return (
     <div className="Cards">
-      <div >
-        <input className={sbarcss["lol"]}
+      <div>
+        <input
+          className={sbarcss["lol"]}
           ref={searchInputField}
           id="search-bar-input"
           className="col-md-12 input"
@@ -110,7 +111,9 @@ const SearchBar = () => {
           suggestions.map((suggestion, i) => (
             <div
               key={i}
-              className={sbarcss['suggestion col-md-12 justify-content-md-center']}
+              className={
+                sbarcss["suggestion col-md-12 justify-content-md-center"]
+              }
               onMouseDown={() => handleSuggest(suggestion.title)}
             >
               {suggestion.title}
@@ -125,8 +128,9 @@ const SearchBar = () => {
         {mealData && <MealList mealData={mealData} />}
       </div>
 
-      <div className="cards__container"><Spotify/></div>
-
+      <div className="cards__container">
+        <Spotify />
+      </div>
     </div>
   );
 };

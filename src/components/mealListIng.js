@@ -46,7 +46,7 @@ export default function MealListIng({ mealDataIng }) {
         <li>Ingredients matched: {usedIngredientCount}</li>
         <li>Ingredients missing: {missedIngredientCount}</li>
         <li>Preparation time: {prepTime} minutes</li>
-        <li>Number ofgit servings: {serve}</li>
+        <li>Number of servings: {serve}</li>
       </ul>
       <a
         Style="font-size:40px;margin-left:45%;margin-top:70px;font-family:monospace;font-weight:lighter;"

@@ -54,42 +54,6 @@ function Favourites() {
     mock();
   }, [meals]);
 
-  // useEffect(() => {
-  //   const fav = () => {
-  //     console.log(userId);
-  //     Axios.get("http://localhost:3001/fav", {
-  //       params: {
-  //         userId: userId,
-  //       },
-  //     }).then((response) => {
-  //       console.log(response);
-  //       setMeals(response.data);
-  //     });
-  //   };
-  //   fav();
-  // }, [userId]);
-
-  // function favmeal() {
-  //   console.log(meals);
-  //   meals.forEach((meal) => {
-  //     Meal((meal = meal));
-  //   fetch(
-  //       `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=696b0c4fb4de43bd9c94815931d4d998&`
-  //     )
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //             setImageUrl(data.image);
-  //             setprepTime(data.readyInMinutes);
-  //             setserve(data.servings);
-  //             setsourceUrl(data.sourceUrl);
-  //             setRecpId(meal.id);
-  //           }).catch(() => {
-  //                 console.log("error");
-  //               });
-  //   });
-  // }
-
-  // favmeal();
 
   if (isLoggedIn) {
     return (

@@ -59,7 +59,7 @@ export default function FavList({ mealData }) {
         <li>Number of servings: {serve}</li>
       </ul>
       <Heart
-        Style="font-size:40px;margin-left:45%;margin-top:70px;font-family:monospace;font-weight:lighter;"
+        styles="font-size:40px;margin-left:45%;margin-top:70px;font-family:monospace;font-weight:lighter;"
         isClick={isFav}
         onClick={() => {
           onSubmit();

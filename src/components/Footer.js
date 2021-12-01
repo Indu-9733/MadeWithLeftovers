@@ -3,8 +3,6 @@ import footercss from "./Footer.module.css";
 import { Button } from "./Button";
 import { Link } from "react-router-dom";
 
-
-
 function Footer() {
   return (
     <div className={footercss["footer-container"]}>
@@ -16,33 +14,37 @@ function Footer() {
       <div class={footercss["footer-links"]}>
         <div className={footercss["footer-link-wrapper"]}>
           <div class={footercss["footer-link-items"]}>
-            <h2>About Us</h2>
-            <Link to="/sign-up">How it works</Link>
-            <Link to="/">Testimonials</Link>
-            <Link to="/">Careers</Link>
-            <Link to="/">Investors</Link>
-            <Link to="/">Terms of Service</Link>
+            <h2>Leftovers?</h2>
+            <Link to="/sign-up">Sign Up</Link>
+            <Link to="/sign-in">Sign In</Link>
+            <Link to="/search-bar">Search Recipe</Link>
+            <Link to="/services">Get Started</Link>
+            <Link to="/favourites">Favourites</Link>
           </div>
-          <div class={footercss['footer-link-items']}>
+          <div class={footercss["footer-link-items"]}>
             <h2>Contact Us</h2>
-            <Link to="/">Contact</Link>
-            <Link to="/">Support</Link>
-            <Link to="/">Locations</Link>
+            <a href="https://www.gmail.com/">Contact Us</a>
+            <a href="https://www.google.com/maps/@38.895616,-77.0473984,14z">
+              Support
+            </a>
+            <a href="https://www.google.com/maps/@38.895616,-77.0473984,14z">
+              Location
+            </a>
           </div>
         </div>
-        <div className={footercss['footer-link-wrapper']}>
-        <div class={footercss['footer-link-items']}>
+        <div className={footercss["footer-link-wrapper"]}>
+          <div class={footercss["footer-link-items"]}>
             <h2>Social Media</h2>
-            <Link to="/">Instagram</Link>
-            <Link to="/">Facebook</Link>
-            <Link to="/">Youtube</Link>
-            <Link to="/">Twitter</Link>
+            <a href="https://www.instagram.com/">Instagram</a>
+            <a href="https://www.facebook.com/">Facebook</a>
+            <a href="https://www.youtube.com/">Youtube</a>
+            <a href="https://www.twitter.com/">Twitter</a>
           </div>
         </div>
       </div>
       <section class="social-media">
         <div class="social-media-wrap">
-        <div class={footercss['footer-logo']}>
+          <div class={footercss["footer-logo"]}>
             <Link to="/" className="social-logo">
               MADE WITH LEFTOVERS
               <i class="fab fa-typo3" />
