@@ -1,61 +1,27 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { useEffect } from "react";
+import Navbar from "./components/NavBar";
 import "./App.css";
-import Footer from "./components/Footer";
-import Spotify from "./components/spotify";
-import NavBar from "./components/NavBar";
-import ImageSlider from "./components/ImageSlider";
-import { SliderData } from "./components/SliderData";
-import MealList from "./components/mealList";
+import Home from "./components/pages/Home";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Services from "./components/pages/Services";
+import Products from "./components/pages/Products";
+import SignUp from "./components/pages/SignUp";
+import { observer } from "mobx-react-lite";
+import SignIn from "./components/pages/SignIn";
+import SignOut from "./components/pages/SignOut";
+import SearchBar from "./components/pages/SearchBar";
 import Axios from "axios";
-import { useState } from "react";
-import SearchBar from "./components/SearchBar";
-import MealDataIng from "./components/mealDataIng";
-// api-ID 696b0c4fb4de43bd9c94815931d4d998
+import FindRecepie from "./components/pages/FindRecepie";
+import Favourites from "./components/pages/Favourites";
+import Footer from "./components/Footer";
 
 function App() {
-  const [data, setData] = React.useState(null);
-  const [id, setId] = useState("");
-  const [mealData, setMealData] = useState(null);
-  const [mealDataIng, setMealDataIng] = useState(null);
-  const [firstname, setFirstName] = useState("");
-  const [lastname, setLastname] = useState(0);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [dob, setDob] = useState("");
-  const [newWage, setNewWage] = useState(0);
-
-  const [employeeList, setEmployeeList] = useState([]);
-
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data.message);
-        setMealDataIng(data);
-      });
-  }, []);
-
-  const addUser = () => {
-    Axios.post("http://localhost:3001/createUser", {
-      firstname: firstname,
-      lastname: lastname,
-      email: email,
-      password: password,
-      dob: dob,
-    }).then(() => {
-      setEmployeeList([
-        ...employeeList,
-        {
-          firstname: firstname,
-          lastname: lastname,
-          email: email,
-          password: password,
-          dob: dob,
-        },
-      ]);
+  Axios.defaults.withCredentials = true;
+  useEffect(() => {
+    Axios.get("http://localhost:3001/login").then((response) => {
+      console.log(response);
     });
-  };
+  }, []);
 
   // find recepie for ingradients
   const findRecepie = () => {
@@ -91,100 +57,23 @@ function App() {
   // }
 
   return (
-    /* To send the fav recepie id to DB to save *start*
-      <div className="information">
-        <label>Id:</label>
-        <input
-          type="text"
-          onChange={(event) => {
-            setId(event.target.value);
-          }}
-        />
-      </div>
-      <button onClick={favRecepie}>Search Recepie</button>
-      {employeeList.map((val, key) => {
-        return (
-          <div className="employee">
-            <div>
-              <h3>Name: {val.first_name}</h3>
-            </div>
-          </div>
-        );
-      })}*/
-
-    <div className="App">
-      <NavBar />
-      <section>
-        <SearchBar />
-      </section>
-      <div className="information">
-        <label>First Name:</label>
-        <input
-          type="text"
-          onChange={(event) => {
-            setFirstName(event.target.value);
-          }}
-        />
-      </div>
-      <div className="information">
-        <label>Last Name:</label>
-        <input
-          type="text"
-          onChange={(event) => {
-            setLastname(event.target.value);
-          }}
-        />
-      </div>
-      <div className="information">
-        <label>Email:</label>
-        <input
-          type="text"
-          onChange={(event) => {
-            setEmail(event.target.value);
-          }}
-        />
-      </div>
-      <div className="information">
-        <label>Password:</label>
-        <input
-          type="text"
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
-        />
-      </div>
-      <div className="information">
-        <label>Date of Birth:</label>
-        <input
-          type="text"
-          onChange={(event) => {
-            setDob(event.target.value);
-          }}
-        />
-      </div>
-      <button onClick={addUser}>Add User</button>
-
-      <div className="information">
-        <label>Id:</label>
-        <input
-          type="text"
-          onChange={(event) => {
-            setId(event.target.value);
-          }}
-        />
-      </div>
-      <button onClick={() => getRecepie(id)}>Search Recepie</button>
-      {mealData && <MealList mealData={mealData} />}
-
-      <button onClick={() => findRecepie()}>FindRecepie</button>
-      <section className="meals">
-        {mealDataIng && <MealDataIng mealDataIng={mealDataIng} />}
-      </section>
-      <Spotify />
-      <ImageSlider slides={SliderData} />
-      <Footer />
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/services" component={Services} />
+          <Route path="/products" component={Products} />
+          <Route path="/sign-up" component={SignUp} />
+          <Route path="/sign-in" component={SignIn} />
+          <Route path="/search-bar" component={SearchBar} />
+          <Route path="/find-recepie" component={FindRecepie} />
+          <Route path="/favourites" component={Favourites} />
+          <Route path="/sign-out" component={SignOut} />
+        </Switch>
+      </Router>
+    </>
   );
 }
 
-export default App;
+export default observer(App);

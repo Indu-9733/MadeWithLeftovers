@@ -1,4 +1,6 @@
-import { HTMLAttributes } from 'react';
+
+import { HTMLAttributes } from "react";
+
 
 interface SpotifyProps extends HTMLAttributes<HTMLIFrameElement> {
   [key: string]: any;
@@ -15,14 +17,16 @@ const Spotify = ({
   link,
   style = {},
   wide = false,
-  width = wide ? '100%' : 300,
+  width = wide ? "100%" : 300,
   height = wide ? 80 : 380,
   frameBorder = 0,
-  allow = 'encrypted-media',
+  allow = "encrypted-media",
   ...props
 }: SpotifyProps) => {
-  const url = new URL("https://open.spotify.com/playlist/4gUFyfMUfvdAn7ac3LwgBt");
-//   https://open.spotify.com/playlist/0XJeadDTtu2HvJ55LhzEfB
+  const url = new URL(
+    "https://open.spotify.com/playlist/4gUFyfMUfvdAn7ac3LwgBt"
+  );
+  //   https://open.spotify.com/playlist/0XJeadDTtu2HvJ55LhzEfB
   // https://open.spotify.com/track/1KFxcj3MZrpBGiGA8ZWriv?si=f024c3aa52294aa1
   return (
     <iframe
@@ -41,4 +45,6 @@ const Spotify = ({
   );
 };
 
+
 export default Spotify;
+

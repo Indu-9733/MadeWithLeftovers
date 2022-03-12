@@ -1,86 +1,102 @@
 import React from "react";
-import styled from "styled-components";
-import { SocialIcon } from "react-social-icons";
+import footercss from "./Footer.module.css";
+import { Button } from "./Button";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <FooterContainer className="main-footer">
-      <div className="footer-middle">
-        <div className="container">
-          <div className="row">
-            {/* column 1 */}
-            <div className="col-md-5 col-sm-6">
-              <h4>Contact Us</h4>
-              <ul className="list-unstyled">
-                <li>madewithleftovers@gmail.com</li>
-                <li>xxx-xxx-xxxx</li>
-                <li> USA</li>
-              </ul>
-            </div>
-            {/* column 2 */}
-            <div className="col-md-4 col-sm-6">
-              <h4>Social Media </h4>
-              <ul className="list-unstyled">
-                <li>
-                  <a href="/">Facebook</a>
-                </li>
-                <li>
-                  <a href="/">Twitter</a>
-                </li>
-                <li>
-                  <a href="/">Instagram</a>
-                </li>
-              </ul>
-            </div>
-            {/* column 3 */}
-            <div className="col-md-3 col-sm-6">
-              <h4>The Team</h4>
-              <ul className="list-unstyled">
-                <li>
-                  <a href="https://www.linkedin.com/in/indu-goel-73685992/">
-                    Indu Goel
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.linkedin.com/in/samyukthagiridhar">
-                    Samyuktha Giridhar
-                  </a>
-                </li>
-              </ul>
-            </div>
+    <div className={footercss["footer-container"]}>
+      <section className={footercss["footer-subscription"]}>
+        <p className={footercss["footer-subscription-heading"]}>
+          Join the MADE WITH LEFTOVERS newsletter to receive seasonal recipes!
+        </p>
+      </section>
+      <div class={footercss["footer-links"]}>
+        <div className={footercss["footer-link-wrapper"]}>
+          <div class={footercss["footer-link-items"]}>
+            <h2>Leftovers?</h2>
+            <Link to="/sign-up">Sign Up</Link>
+            <Link to="/sign-in">Sign In</Link>
+            <Link to="/search-bar">Search Recipe</Link>
+            <Link to="/services">Get Started</Link>
+            <Link to="/favourites">Favourites</Link>
           </div>
-          {/*Footer Bottom */}
-          <div className="footer-bottom">
-            <p className="text-xs-center">
-              &copy;{new Date().getFullYear()} Made with leftovers - All Rights
-              Reserved
-            </p>
+          <div class={footercss["footer-link-items"]}>
+            <h2>Contact Us</h2>
+            <a href="https://www.gmail.com/">Contact Us</a>
+            <a href="https://www.google.com/maps/@38.895616,-77.0473984,14z">
+              Support
+            </a>
+            <a href="https://www.google.com/maps/@38.895616,-77.0473984,14z">
+              Location
+            </a>
+          </div>
+        </div>
+        <div className={footercss["footer-link-wrapper"]}>
+          <div class={footercss["footer-link-items"]}>
+            <h2>Social Media</h2>
+            <a href="https://www.instagram.com/">Instagram</a>
+            <a href="https://www.facebook.com/">Facebook</a>
+            <a href="https://www.youtube.com/">Youtube</a>
+            <a href="https://www.twitter.com/">Twitter</a>
           </div>
         </div>
       </div>
-    </FooterContainer>
+      <section class="social-media">
+        <div class="social-media-wrap">
+          <div class={footercss["footer-logo"]}>
+            <Link to="/" className="social-logo">
+              MADE WITH LEFTOVERS
+              <i class="fab fa-typo3" />
+            </Link>
+          </div>
+          <small class="website-rights">MADE WITH LEFTOVERS © 2021</small>
+          <div class="social-icons">
+            <Link
+              class="social-icon-link facebook"
+              to="/"
+              target="_blank"
+              aria-label="Facebook"
+            >
+              <i class="fab fa-facebook-f" />
+            </Link>
+            <Link
+              class="social-icon-link instagram"
+              to="/"
+              target="_blank"
+              aria-label="Instagram"
+            >
+              <i class="fab fa-instagram" />
+            </Link>
+            <Link
+              class="social-icon-link youtube"
+              to="/"
+              target="_blank"
+              aria-label="Youtube"
+            >
+              <i class="fab fa-youtube" />
+            </Link>
+            <Link
+              class="social-icon-link twitter"
+              to="/"
+              target="_blank"
+              aria-label="Twitter"
+            >
+              <i class="fab fa-twitter" />
+            </Link>
+            <Link
+              class="social-icon-link twitter"
+              to="/"
+              target="_blank"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin" />
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
 
 export default Footer;
-
-const FooterContainer = styled.footer`
-  .footer-middle {
-    background: var(--mainDark);
-    padding-top: 1em;
-    color: var(--mainWhite);
-  }
-
-  .footer-bottom {
-    padding-top: 0rem;
-    padding-bottom: 1rem;
-  }
-
-  ul li a {
-    color: var(--mainGrey);
-  }
-
-  ul li a:hover {
-    color: var(--mainLight);
-  }
-`;

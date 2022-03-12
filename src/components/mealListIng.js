@@ -34,15 +34,32 @@ export default function MealListIng({ mealDataIng }) {
   return (
     <article>
       <h1>{title}</h1>
-      <img src={imageUrl} alt="recipe" />
-      <ul className="instructions">
+      <img
+        src={imageUrl}
+        alt="recipe"
+        Style="font-size:40px;margin-left:45%;margin-top:70px;font-family:monospace;font-weight:lighter;"
+      />
+      <ul
+        className="instructions"
+        Style="font-size:40px;margin-left:45%;margin-top:70px;font-family:monospace;font-weight:lighter;"
+      >
         <li>Ingredients matched: {usedIngredientCount}</li>
         <li>Ingredients missing: {missedIngredientCount}</li>
         <li>Preparation time: {prepTime} minutes</li>
-        <li>Number ofgit servings: {serve}</li>
+        <li>Number of servings: {serve}</li>
       </ul>
-      <a href={sourceUrl}>Go to Recipe</a>{" "}
-      <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
+      <a
+        Style="font-size:40px;margin-left:45%;margin-top:70px;font-family:monospace;font-weight:lighter;"
+        href={sourceUrl}
+      >
+        Go to Recipe
+      </a>{" "}
+      <Heart
+        styles="font-size:40px;margin-left:45%;margin-top:70px;font-family:monospace;font-weight:lighter;"
+        isClick={isClick}
+        onClick={() => setClick(!isClick)}
+      />
+
       <Button onClick={() => setCountUp(countUp + 1)}>
         {`${countUp === 0 ? "" : countUp}`}
       </Button>

@@ -1,0 +1,65 @@
+.la {
+  width: 400px;
+  height: 48px;
+  padding: 20px;
+  font-size: large;
+  position: relative;
+  border: solid;
+  margin-left: 500px;
+}
+
+.lb {
+  width: 400px;
+  height: 48px;
+  padding: 20px;
+  font-size: large;
+  position: relative;
+  border: solid;
+  margin-left: 500px;
+}
+
+.lc {
+  width: 400px;
+  height: 48px;
+  padding: 20px;
+  font-size: large;
+  position: relative;
+  border: solid;
+  margin-left: 500px;
+}
+
+.ld {
+  width: 400px;
+  height: 48px;
+  padding: 20px;
+  font-size: large;
+  position: relative;
+  border: solid;
+  margin-left: 500px;
+}
+
+.le {
+  width: 400px;
+  height: 48px;
+  padding: 20px;
+  font-size: large;
+  position: relative;
+  border: solid;
+  margin-left: 500px;
+}
+
+.lf {
+  width: 400px;
+  height: 48px;
+  margin: auto;
+  font-size: large;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-left: 500px;
+}
+
+.lf:hover {
+  background-color: #4caf50;
+  color: white;
+}
