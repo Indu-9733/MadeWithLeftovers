@@ -5,6 +5,7 @@ import Axios from "axios";
 
 export default function Meal({ meal }) {
   Axios.defaults.withCredentials = true;
+
   const [imageUrl, setImageUrl] = useState("");
   const [prepTime, setprepTime] = useState("");
   const [serve, setserve] = useState("");
@@ -12,6 +13,7 @@ export default function Meal({ meal }) {
   let isFav = false;
   const [userId, setUserId] = useState(0);
   const [recpId, setRecpId] = useState("");
+
 
   useEffect(() => {
     fetch(
@@ -29,7 +31,7 @@ export default function Meal({ meal }) {
         console.log("error");
       });
   }, [meal.id]);
-
+  
   useEffect(() => {
     Axios.get("http://localhost:3001/login").then((response) => {
       if (response.data.loggedIn == true)

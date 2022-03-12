@@ -1,4 +1,6 @@
+
 import { HTMLAttributes } from "react";
+
 
 interface SpotifyProps extends HTMLAttributes<HTMLIFrameElement> {
   [key: string]: any;
@@ -43,4 +45,6 @@ const Spotify = ({
   );
 };
 
+
 export default Spotify;
+

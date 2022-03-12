@@ -59,6 +59,7 @@ export default function MealListIng({ mealDataIng }) {
         isClick={isClick}
         onClick={() => setClick(!isClick)}
       />
+
       <Button onClick={() => setCountUp(countUp + 1)}>
         {`${countUp === 0 ? "" : countUp}`}
       </Button>

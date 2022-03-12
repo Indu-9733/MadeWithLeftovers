@@ -23,6 +23,39 @@ function App() {
     });
   }, []);
 
+  // find recepie for ingradients
+  const findRecepie = () => {
+    fetch(
+      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=696b0c4fb4de43bd9c94815931d4d998&ingredients="pasta,+flour,+sugar"&number=2&ranking=2`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setMealDataIng(data);
+        console.log(mealDataIng);
+      })
+      .catch(() => {
+        console.log("error");
+      });
+  };
+
+  //get recepie from search bar
+  const getRecepie = (id) => {
+    fetch(
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=696b0c4fb4de43bd9c94815931d4d998&query=${id}&number=2`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setMealData(data);
+      })
+      .catch(() => {
+        console.log("error");
+      });
+  };
+
+  // function handleChange(e) {
+  //   setCalories(e.target.value);
+  // }
+
   return (
     <>
       <Router>

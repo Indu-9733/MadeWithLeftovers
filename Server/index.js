@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
+
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -29,7 +30,6 @@ app.use(
     },
   })
 );
-
 const db = mysql.createConnection({
   user: "wordpressuser",
   host: "localhost",
@@ -43,8 +43,9 @@ app.post("/createUser", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   const dob = req.body.dob;
-  console.log(email);
 
+  console.log(email);
+  
   db.query(
     "INSERT INTO usercred (first_name, last_name, email, password, dob) VALUES (?,?,?,?,?)",
     [firstname, lastname, email, password, dob],
@@ -57,6 +58,7 @@ app.post("/createUser", (req, res) => {
     }
   );
 });
+
 
 app.post("/createRecepie", (req, res) => {
   const recepiName = req.body.recepiName;
@@ -203,6 +205,7 @@ app.get("/searchUser", (req, res) => {
     }
   );
 });
+
 
 // app.put("/update", (req, res) => {
 //   const id = req.body.id;
